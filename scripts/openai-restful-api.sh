@@ -6,7 +6,7 @@ curl http://$host:5005/v1/audio/speech \
   -H "Content-Type: application/json" \
   -d '{
     "model": "orpheus",
-    "input": "Uh...<groan> what...what the fuck are you talking about? I'\''m just doing a llama three B text to speech test, you know?",
+    "input": "<groan> what...what the fuck are you talking about? I'\''m just doing a llama three B text to speech test, you know?",
     "voice": "tara",
     "response_format": "wav",
     "speed": 1.2

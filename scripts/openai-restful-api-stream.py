@@ -58,7 +58,7 @@ def stream_speech_from_orpheus(text: str, voice: str = "Orpheus", output_file: s
         logger.error(f"An unexpected error occurred: {e}")
 
 if __name__ == "__main__":
-    text_to_speak = "Uh...<groan> what...what the fuck are you talking about? I'm just doing a llama three B text to speech test, you know?"
+    text_to_speak = "<groan> what...what the fuck are you talking about? I'm just doing a llama three B text to speech test, you know?"
     voice_to_use = "Orpheus"  # You can change this to other available voices
 
     logger.info(f"Initiating streaming for text: '{text_to_speak}' with voice: '{voice_to_use}'")
