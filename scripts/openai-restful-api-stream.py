@@ -2,6 +2,7 @@
 import requests
 import json
 import os
+import argparse
 from loguru import logger
 from dotenv import load_dotenv
 
@@ -58,9 +59,17 @@ def stream_speech_from_orpheus(text: str, voice: str = "Orpheus", output_file: s
         logger.error(f"An unexpected error occurred: {e}")
 
 if __name__ == "__main__":
-    text_to_speak = "<groan> what...what the fuck are you talking about? I'm just doing a llama three B text to speech test, you know?"
-    voice_to_use = "Orpheus"  # You can change this to other available voices
-
-    logger.info(f"Initiating streaming for text: '{text_to_speak}' with voice: '{voice_to_use}'")
-    stream_speech_from_orpheus(text_to_speak, voice_to_use)
+    parser = argparse.ArgumentParser(description='Stream speech from Orpheus-FASTAPI server')
+    parser.add_argument('--text', type=str, 
+                       default="<groan> what...what the fuck are you talking about? I'm just doing a llama three B text to speech test, you know?",
+                       help='Text to convert to speech')
+    parser.add_argument('--voice', type=str, default="Orpheus",
+                       help='Voice to use for speech synthesis')
+    parser.add_argument('--output', type=str, default="stream.wav",
+                       help='Output WAV file path')
+    
+    args = parser.parse_args()
+    
+    logger.info(f"Initiating streaming for text: '{args.text}' with voice: '{args.voice}'")
+    stream_speech_from_orpheus(args.text, args.voice, args.output)
     logger.info("Streaming complete.")
